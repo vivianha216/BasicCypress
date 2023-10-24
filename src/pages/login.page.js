@@ -1,12 +1,12 @@
 class LoginPage{
     get inputUsername(){
-        return cy.get("[name='username']");
+        return cy.get("#email");
     }
     get inputPassword(){
-        return cy.get("[name='password']");
+        return cy.get("[name=\"login[password]\"]");
     }
     get btnLogin(){
-        return cy.get("button[type='submit']");
+        return cy.get("button[class='action login primary']");
     }
 }
 

@@ -6,7 +6,7 @@ module.exports = defineConfig({
       // implement node event listeners here
     },
     specPattern: "./src/specs/**.{js,jsx,ts,tsx}",
-    baseUrl: "https://opensource-demo.orangehrmlive.com/web/index.php",
+    baseUrl: "https://magento.softwaretestingboard.com/",
     projectId: "basiccypress",
   },
   defaultCommandTimeout: 4000,

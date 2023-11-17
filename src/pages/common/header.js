@@ -1,6 +1,5 @@
 class Header{
     get accountName() {
-        //
         return cy.get(".page-header .logged-in");
     }
     get btnArrow() {

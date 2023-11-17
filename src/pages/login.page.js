@@ -8,6 +8,9 @@ class LoginPage{
     get btnLogin(){
         return cy.get("button[class='action login primary']");
     }
+    get alertError(){
+        return cy.get("div[data-bind=\"html: $parent.prepareMessageForHtml(message.text)\"]");
+    }
 }
 
 export const loginPage = new LoginPage();

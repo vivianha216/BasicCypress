@@ -9,5 +9,6 @@ module.exports = defineConfig({
     baseUrl: "https://magento.softwaretestingboard.com/",
     projectId: "basiccypress",
   },
+  reporter: 'mochawesome',
   defaultCommandTimeout: 4000,
 });

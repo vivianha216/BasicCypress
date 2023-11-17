@@ -2,9 +2,11 @@ import { Common } from "../pages/common/common";
 import * as LoginData from "../data/login.data"
 
 describe('login', () => {
-    it('login is successful', () => {
+    beforeEach(() => {
         //open the login page
             cy.visit("customer/account/login/");
+    });
+    it('login is successful', () => {        
         //get data
             let loginSuccess = LoginData.LOGIN_SUCCESS;
 
@@ -16,6 +18,7 @@ describe('login', () => {
 
         //find login btn by attribute & tag name then click
             Common.LoginModule.btnLogin.click();
+            cy.wait(1000);
 
         //verify path that /login is not exist
             // cy.location('pathname').should('not.include', '/login')
@@ -26,5 +29,22 @@ describe('login', () => {
             Common.HeaderModule.btnArrow.click();
             Common.HeaderModule.btnSignOut.click();
             
+    });
+    it('login is unsuccessful', ()=>{
+        //get data
+            let loginSuccess = LoginData.LOGIN_WRONGPASS;
+
+        //find username by ID then input the text
+            Common.LoginModule.inputUsername.type(loginSuccess.email);
+
+        //find password by attribute name then input the text
+            Common.LoginModule.inputPassword.type(loginSuccess.password);
+
+        //find login btn by attribute & tag name then click
+            Common.LoginModule.btnLogin.click();
+
+        //verify alert
+            Common.LoginModule.alertError.should('contain.text',
+            'The account sign-in was incorrect or your account is disabled temporarily. Please wait and try again later.');
     });
 });

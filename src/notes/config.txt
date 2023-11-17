@@ -1,0 +1,25 @@
+//package.json
+//1. open browser console
+    "test": "cypress run --browser chrome --headed",
+
+//2. set up mochawesome report
+    //2.1 add packages
+        npm add -D marge
+        npm add -D mochawesome
+        npm add -D  mochawesome-merge
+    //2.2 create report for each TC
+        "test:mocha-reporter": "cypress run --reporter mochawesome --reporter-options reportDir=\"reports/results\",overwrite=false,html=false,json=true",
+    //2.3 merge reports to a json file
+        "merge-report": "npx mochawesome-merge \"reports/results/*.json\" > mochawesome.json",
+    //2.4 build a json file to html
+        "build-report": "npx marge mochawesome.json",
+    //2.5 merge "merge-report" & "build-report"
+        "open-report":"npm run merge-report && npm run build-report"
+
+    //2.6 other: use serve for "open-report"
+        "open-report":"npm run merge-report && npm run build-report && serve mocha-reporter",
+    
+    //2.7 clean files which is created
+        "delete-file": "del \"mochawesome.json\"",
+        "clean-report": "rmdir /s /q \"reports/\" && rmdir /s /q \"mochawesome-report/\" && npm run delete-file",
+

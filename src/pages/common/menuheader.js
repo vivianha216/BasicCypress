@@ -1,12 +1,6 @@
 class MenuHeader{
-    get womenTab(){
-        return cy.get("//span[text()='Women']");
-    }
-    get topMenu(){
-
-    }
     get jacketMenu(){
-        
+        cy.visit("women/tops-women/jackets-women.html");
     }
 }
 

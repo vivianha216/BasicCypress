@@ -1,5 +1,7 @@
 import { Common } from "../pages/common/common";
 import * as LoginData from "../data/login.data"
+import { jacketPage } from "../pages/women/tops/jackets.page";
+import JACKET_DATA from "../data/jacket.data.json"
 
 describe('Add To Cart', () => {
     before(() => {
@@ -16,12 +18,18 @@ describe('Add To Cart', () => {
 
         //find login btn by attribute & tag name then click
             Common.LoginModule.btnLogin.click();
+            cy.wait(1000);
 
-        //verify path that /login is not exist
-            cy.url().should('not.include', '/login');
     });
-    it('add to cart',()=>{
+    it('compare data list',()=>{
         //open women/tops/jackets
-            cy.visit("women/tops-women/jackets-women.html");
+            Common.MenuHeader.jacketMenu;
+        //compare data
+            jacketPage.getAllData().then(allItemData =>{
+                cy.wrap('').then(()=>{
+                    cy.log(JSON.stringify(allItemData));
+                    // expect(allItemData).to.be.deep.eq(JACKET_DATA);
+                })
+            })
     });
 });

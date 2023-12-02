@@ -1,41 +1,50 @@
 [
     {
-        "itemName": "Olivia 1/4 Zip Light Jacket"
+        "itemName": "Olivia 1/4 Zip Light Jacket",
+        "itemPrice": "$77.00"
     },
     {
-        "itemName": "Juno Jacket"
+        "itemName": "Juno Jacket",
+        "itemPrice": "$77.00"
     },
     {
-        "itemName": "Neve Studio Dance Jacket"
+        "itemName": "Neve Studio Dance Jacket",
+        "itemPrice": "$69.00"
     },
     {
-        "itemName": "Nadia Elements Shell"
+        "itemName": "Nadia Elements Shell",
+        "itemPrice": "$69.00"
     },
     {
-        "itemName": "Jade Yoga Jacket"
+        "itemName": "Jade Yoga Jacket",
+        "itemPrice": "$32.00"
     },
     {
-        "itemName": "Adrienne Trek Jacket"
+        "itemName": "Adrienne Trek Jacket",
+        "itemPrice": "$57.00"
     },
     {
-        "itemName": "Inez Full Zip Jacket"
+        "itemName": "Inez Full Zip Jacket",
+        "itemPrice": "$59.00"
     },
     {
-        "itemName": "Riona Full Zip Jacket"
+        "itemName": "Riona Full Zip Jacket",
+        "itemPrice": "$60.00"
     },
     {
-        "itemName": "Ingrid Running Jacket"
+        "itemName": "Ingrid Running Jacket",
+        "itemPrice": "$84.00"
     },
     {
-        "itemName": "Augusta Pullover Jacket"
+        "itemName": "Augusta Pullover Jacket",
+        "itemPrice": "$57.00"
     },
     {
-        "itemName": "Josie Yoga Jacket"
+        "itemName": "Josie Yoga Jacket",
+        "itemPrice": "$56.25"
     },
     {
-        "itemName": "Stellar Solar Jacket"
-    },
-    {
-        "itemName": ""
+        "itemName": "Stellar Solar Jacket",
+        "itemPrice": "$75.00"
     }
 ]

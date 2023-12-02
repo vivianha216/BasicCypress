@@ -3,10 +3,12 @@ import * as LoginData from "../data/login.data"
 import { jacketPage } from "../pages/women/tops/jackets.page";
 import JACKET_DATA from "../data/jacket.data.json"
 
-describe('Add To Cart', () => {
+//xem demo demoblaze
+
+describe('Jacket Page', () => {
     before(() => {
         //open the login page
-        cy.visit("customer/account/login/");
+            cy.visit("customer/account/login/");
         //get data
             let loginSuccess = LoginData.LOGIN_SUCCESS;
 
@@ -28,7 +30,7 @@ describe('Add To Cart', () => {
             jacketPage.getAllData().then(allItemData =>{
                 cy.wrap('').then(()=>{
                     cy.log(JSON.stringify(allItemData));
-                    // expect(allItemData).to.be.deep.eq(JACKET_DATA);
+                    expect(allItemData).to.be.deep.eq(JACKET_DATA);
                 })
             })
     });

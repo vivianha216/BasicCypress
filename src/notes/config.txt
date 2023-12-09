@@ -23,3 +23,8 @@
         "delete-file": "del \"mochawesome.json\"",
         "clean-report": "rmdir /s /q \"reports/\" && rmdir /s /q \"mochawesome-report/\" && npm run delete-file",
 
+    --> chỉ cần chạy 3 lệnh này
+    npm run test:mocha-reporter
+    npm run open-report
+    npm run clean-report
+

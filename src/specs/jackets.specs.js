@@ -19,8 +19,7 @@ describe('Jacket Page', () => {
             Common.LoginModule.inputPassword.type(loginSuccess.password);
 
         //find login btn by attribute & tag name then click
-            Common.LoginModule.btnLogin.click();
-            cy.wait(1000);
+            Common.LoginModule.btnLogin.click({force: true});
 
     });
     it('compare data list',()=>{

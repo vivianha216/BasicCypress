@@ -1,4 +1,4 @@
-import {demoblazePage } from "../pages/demoblaze.page";
+import {demoblazePage } from "../pages/lessons/demoblaze.page";
 import PRODUCT_DATA from "../data/demoblaze.data.json"
 
 describe('SR Home Page', () => {

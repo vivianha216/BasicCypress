@@ -17,8 +17,7 @@ describe('login', () => {
             Common.LoginModule.inputPassword.type(loginSuccess.password);
 
         //find login btn by attribute & tag name then click
-            Common.LoginModule.btnLogin.click();
-            cy.wait(1000);
+            Common.LoginModule.btnLogin.click({force: true});
 
         //verify path that /login is not exist
             // cy.location('pathname').should('not.include', '/login')
@@ -41,7 +40,7 @@ describe('login', () => {
             Common.LoginModule.inputPassword.type(loginSuccess.password);
 
         //find login btn by attribute & tag name then click
-            Common.LoginModule.btnLogin.click();
+            Common.LoginModule.btnLogin.click({force: true});
 
         //verify alert
             Common.LoginModule.alertError.should('contain.text',

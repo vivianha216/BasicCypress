@@ -1,4 +1,4 @@
-import {sRHomePage } from "../pages/simply.page";
+import {sRHomePage } from "../pages/lessons/simply.page";
 
 describe('SR Home Page', () => {
     it('verify card title', () => {

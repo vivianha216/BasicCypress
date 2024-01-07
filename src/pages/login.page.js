@@ -1,16 +1,23 @@
-class LoginPage{
+class ModalLogin{
+    get openModel(){
+        return cy.get("#login2");
+    }
+    get form(){
+        return cy.get("#logInModal .modal-body form")
+    }
     get inputUsername(){
-        return cy.get("#email");
+        return cy.get("#loginusername");
     }
     get inputPassword(){
-        return cy.get("[name=\"login[password]\"]");
+        return cy.get("#loginpassword");
     }
     get btnLogin(){
-        return cy.get("button[class='action login primary']");
+        return cy.get("[onclick='logIn()']");
     }
-    get alertError(){
-        return cy.get("div[data-bind=\"html: $parent.prepareMessageForHtml(message.text)\"]");
+
+    get welcomeText(){
+        return cy.get("#nameofuser");
     }
 }
 
-export const loginPage = new LoginPage();
+export const modalLogin = new ModalLogin();

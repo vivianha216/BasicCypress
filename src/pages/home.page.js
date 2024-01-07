@@ -1,5 +1,5 @@
 //Learn about Cypress.Promise
-class DemoblazePage{
+class HomePage{
     get cardItem(){
         return cy.get('.card');
     }
@@ -27,4 +27,4 @@ class DemoblazePage{
         })
     }
 }
-export const demoblazePage = new DemoblazePage();
+export const homePage = new HomePage();

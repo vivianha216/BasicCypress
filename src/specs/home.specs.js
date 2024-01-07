@@ -6,6 +6,10 @@ describe('Home Page', () => {
     beforeEach(() => {
         //open index page
         cy.visit('/');
+
+        /*  - login with API
+            - use cypress/support/commands.js*/
+        cy.login("hacecilia2023", "A123456!");
     });
     it('verify card title', () => {
         homePage.getAllCardData().then(allItemData => {
@@ -44,7 +48,7 @@ describe('Home Page', () => {
             })
         })
     })
-    it.only('verify card with API (shortcut)',()=>{        
+    it.only('verify card with API (shortcut)',()=>{      
         HomeAPI.getProductAPI().then(entries => {
             let apiProductData = entries.response.body.Items;
             apiProductData = apiProductData.map(item => {

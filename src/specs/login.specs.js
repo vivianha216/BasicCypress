@@ -1,49 +1,36 @@
-import { Common } from "../pages/common/common";
-import * as LoginData from "../data/login.data"
+import { MLOGIN_SUCCESS } from "../data/login.data";
+import { modalLogin } from "../pages/login.page";
 
-describe('login', () => {
+describe('Login Test', () => {
     beforeEach(() => {
-        //open the login page
-            cy.visit("customer/account/login/");
+        //open index page
+        cy.visit('/');
+        //open login model
+        modalLogin.openModel.click({force: true});
     });
-    it('login is successful', () => {        
-        //get data
-            let loginSuccess = LoginData.LOGIN_SUCCESS;
+    it('login is successful', ()=>{
+        let data = MLOGIN_SUCCESS;
+        //modelLogin.openModel.click({force: true});
+        modalLogin.form.should('be.visible');
+        modalLogin.inputUsername.type(data.username, {force: true, waiForAnimations: true});
+        modalLogin.inputPassword.type(data.password, {force: true, waiForAnimations: true});
+        modalLogin.btnLogin.click({force: true});
 
-        //find username by ID then input the text
-            Common.LoginModule.inputUsername.type(loginSuccess.email);
-
-        //find password by attribute name then input the text
-            Common.LoginModule.inputPassword.type(loginSuccess.password);
-
-        //find login btn by attribute & tag name then click
-            Common.LoginModule.btnLogin.click({force: true});
-
-        //verify path that /login is not exist
-            // cy.location('pathname').should('not.include', '/login')
-            cy.url().should('not.include', '/login');
-
-        //verify account name
-            Common.HeaderModule.accountName.should('contain.text', `Welcome, ${loginSuccess.accountName}!`);
-            Common.HeaderModule.btnArrow.click();
-            Common.HeaderModule.btnSignOut.click();
-            
-    });
+        //verify username after login
+        modalLogin.welcomeText.should('be.visible');
+        modalLogin.welcomeText.should('contain.text', `Welcome ${data.username}`);
+    })
     it('login is unsuccessful', ()=>{
-        //get data
-            let loginSuccess = LoginData.LOGIN_WRONGPASS;
+        let data = MLOGIN_SUCCESS;
+        //modelLogin.openModel.click({force: true});
+        modalLogin.form.should('be.visible');
+        modalLogin.inputUsername.type(`${data.username}Wrong`, {force: true, waiForAnimations: true});
+        modalLogin.inputPassword.type(data.password, {force: true, waiForAnimations: true});
+        modalLogin.btnLogin.click({force: true});
 
-        //find username by ID then input the text
-            Common.LoginModule.inputUsername.type(loginSuccess.email);
-
-        //find password by attribute name then input the text
-            Common.LoginModule.inputPassword.type(loginSuccess.password);
-
-        //find login btn by attribute & tag name then click
-            Common.LoginModule.btnLogin.click({force: true});
-
-        //verify alert
-            Common.LoginModule.alertError.should('contain.text',
-            'The account sign-in was incorrect or your account is disabled temporarily. Please wait and try again later.');
-    });
+        //verify alert on browser
+        cy.on('window:alert', alert=>{
+            expect(alert).to.contain("User does not exist.")
+        })
+    })
 });

@@ -6,7 +6,7 @@ module.exports = defineConfig({
       // implement node event listeners here
     },
     specPattern: "./src/specs/**.{js,jsx,ts,tsx}",
-    baseUrl: "https://magento.softwaretestingboard.com/",
+    baseUrl: "https://demoblaze.com",
     projectId: "basiccypress",
   },
   reporter: 'mochawesome',

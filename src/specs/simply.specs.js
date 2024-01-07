@@ -1,6 +1,6 @@
-import {sRHomePage } from "../pages/lessons/simply.page";
+import {sRHomePage } from "../pages/simply.page";
 
-describe('SR Home Page', () => {
+describe('Simply Page', () => {
     it('verify card title', () => {
         cy.visit("https://www.simplyrecipes.com/");
         sRHomePage.getHeroCompTitle().then(title => {

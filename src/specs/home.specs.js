@@ -1,18 +1,21 @@
-import {demoblazePage } from "../pages/lessons/demoblaze.page";
-import PRODUCT_DATA from "../data/demoblaze.data.json"
+import { homePage } from "../pages/home.page";
+import PRODUCT_DATA from "../data/home.data.json"
+import { HomeAPI } from "../intercept/homeAPI";
 
-describe('SR Home Page', () => {
+describe('Home Page', () => {
+    beforeEach(() => {
+        //open index page
+        cy.visit('/');
+    });
     it('verify card title', () => {
-        cy.visit("https://demoblaze.com/");
-        demoblazePage.getAllCardData().then(allItemData => {
+        homePage.getAllCardData().then(allItemData => {
             cy.wrap('').then(()=>{
                 cy.log(JSON.stringify(allItemData));
                 expect(allItemData).to.be.deep.eq(PRODUCT_DATA);
             })
         })
     });
-    it.only('verify card title with API',()=>{
-        cy.visit("https://demoblaze.com/");
+    it('verify card with API',()=>{
         //get API by using intercept
         cy.intercept('/entries').as('entries');
 
@@ -33,7 +36,24 @@ describe('SR Home Page', () => {
                 }
             })
             // cy.log(JSON.stringify(apiProductData));
-            demoblazePage.getAllCardData().then(allItemData => {
+            homePage.getAllCardData().then(allItemData => {
+                cy.wrap('').then(()=>{
+                    cy.log(JSON.stringify(allItemData));
+                    expect(allItemData).to.be.deep.eq(apiProductData);
+                })
+            })
+        })
+    })
+    it.only('verify card with API (shortcut)',()=>{        
+        HomeAPI.getProductAPI().then(entries => {
+            let apiProductData = entries.response.body.Items;
+            apiProductData = apiProductData.map(item => {
+                return {
+                    itemName: item.title.replace('\n',''),
+                    itemPrice: `$${item.price}`
+                }
+            })
+            homePage.getAllCardData().then(allItemData => {
                 cy.wrap('').then(()=>{
                     cy.log(JSON.stringify(allItemData));
                     expect(allItemData).to.be.deep.eq(apiProductData);
